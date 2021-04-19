@@ -1,6 +1,8 @@
 # tobot
 Palindrome News Bot for Twitter
 
+Matches headlines with palindromes.  Will post tweets with palindromes and links to the news stories they match. 
+
 ## Creds
 
 Credentials are accessed from Environment Variables.  creds_example.sh is included to make setting these a breeze.  This script requires:
@@ -17,6 +19,14 @@ Palindromes are sourced from wikimedia, a collaboration with [@pdromeprompt](htt
 
 When tweets are used, they are added to a file that prevents their reuse for a configurable number of iterations.
 
+## Matcher
+
+The matcher:
+- Tokenizes headlines and palindromes from its subscribed news services and palindrome list.
+- Removes tokens for common words using a configurable number of words in the Google 10000 word list.
+- Creates a tuple based on tokens in common between the headlines and palindromes
+- Presents the list of matches to the user.
+
 ## Tweets
 
-Tweets are limited to 280 characters total, palindrome + sourcing + news link.  Tweets are curated to not be sardonic or punch down.
+Tweets are limited to 280 characters total, palindrome + sourcing + news link.  Tweets are curated by the user.  Try not to be sardonic or punch down, please.  You're not Noam Chomsky.
