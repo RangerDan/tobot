@@ -3,6 +3,16 @@ Palindrome News Bot for Twitter
 
 Matches headlines with palindromes.  Will post tweets with palindromes and links to the news stories they match. 
 
+## Setup
+
+This repo is set up to use VENV.  Set up the folder by running `python -m venv ./`
+
+Activate the venv with `source bin/activate`
+
+Make a copy of the creds script and add your News API and Twitter creds.  Add your creds to the local environment variables by running `source creds_yourcredsscript.sh`.  Be careful not to edit and then commit your creds.
+
+Run the script with `python tobot.py`
+
 ## Creds
 
 Credentials are accessed from Environment Variables.  creds_example.sh is included to make setting these a breeze.  This script requires:
