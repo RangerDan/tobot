@@ -8,7 +8,11 @@ import requests
 TOP_10000_WORDS_FILE = 'ext/google-10000-english-usa-no-swears.txt'
 RECENTLY_USED_PALINDROMES_FILE = 'ext/recently-used-palindromes.txt'
 PALINDROME_FILES = ['ext/palindromes.txt','ext/dans-novel-palindromes.txt','ext/palindrome-prompts.txt']
-NEWS_SOURCES = ['abc-news','al-jazeera-english','ars-technica','associated-press','bbc-news','cbc-news','cbs-news','google-news','newsweek','reuters','the-washington-post']
+NEWS_SOURCES = ['abc-news','al-jazeera-english','ars-technica','associated-press','axios',
+                'bbc-news','bloomberg','buzzfeed',
+                'cbc-news','cbs-news','cnn','engadget','financial-post','fortune',
+                'google-news','ign','independent','mtv-news','newsweek',
+                'reuters','techcrunch','techradar','the-washington-post','wired']
 
 class Palindrome:
     def __init__(self, text):
