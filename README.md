@@ -1,7 +1,7 @@
 # tobot
 Palindrome News Bot for [Bluesky](https://bsky.app/tobot)
 
-Locally run utiltiy that matches current headlines with palindromes.  Will post skeets with palindromes and links to the news stories they match.  Human-curated to avoid mean-spirited posts.
+Locally run utility that matches current headlines with palindromes.  Will post skeets with palindromes and embedded links to the news stories they match.  Human-curated to avoid mean-spirited posts.
 
 ## Setup
 
@@ -40,3 +40,13 @@ The matcher:
 ## Skeets
 
 Skeets are limited to 299 characters total, palindrome + sourcing + news link.  Skeets are curated by the user instead of posting automatically.  Try not to be sardonic or punch down, please.
+
+## Future Development Possibilities
+
+- Local News
+
+- Containerize
+
+- Deploy it somewhere
+
+- Terraform That
