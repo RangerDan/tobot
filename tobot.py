@@ -52,7 +52,7 @@ class Article:
         return f"Article({self.title})"
     
     def __str__(self):
-        return f"Article: {self.title}\nSource: {self.source_name}\nURL: {self.url}\nDescription: {self.description}\nContent: {self.content}"
+        return f"Article: {self.title}\nSource: {self.source_name}\nURL: {self.url}"
 
 class Pair:
     def __init__(self, palindrome: Palindrome, article: Article):
@@ -155,8 +155,8 @@ def print_pairs(pairs):
     for index, pair in enumerate(pairs, start=1):
         if (len(pair.palindrome.text) + 24 + 12 <= 280):
             print("Pair {}:".format(index))
-            print("P - {}".format(pair.palindrome))
-            print("A - {}".format(pair.article))
+            print(" P - {}".format(pair.palindrome))
+            print(" A - {}".format(pair.article))
         else:
             print("SKIPPED {}".format(index))
 
