@@ -4,6 +4,7 @@ import re
 import string
 from creds import TobotCreds
 import requests
+import unicodedata
 
 TOP_10000_WORDS_FILE = 'ext/google-10000-english-usa-no-swears.txt'
 RECENTLY_USED_PALINDROMES_FILE = 'ext/recently-used-palindromes.txt'
@@ -26,8 +27,11 @@ class Palindrome:
 
     def is_palindrome(self):
         # Normalize the text by removing spaces and converting to lowercase
-        normalized_text = ''.join(e for e in self.text.split('@')[0].lower() if e.isalnum())
-        return normalized_text == normalized_text[::-1]
+        split_text = self.text.split('@')[0].split('#')[0].lower()
+        normalized_text = unicodedata.normalize('NFKD', split_text)
+        ascii_text = ''.join([c for c in normalized_text if not unicodedata.combining(c)])
+        no_punctuation = ''.join(e for e in ascii_text if e.isalnum())
+        return no_punctuation == no_punctuation[::-1]
     
     def __repr__(self):
         return f"Palindrome({self.text})"
@@ -122,13 +126,16 @@ def get_blocked_wordlist():
 
 def recently_used_palindromes(set_blocked_wordlist):
     # List last 20 recently used palindromes
+    # TODO Make the file reading a function
     recently_used_list = []
-    infile = open(RECENTLY_USED_PALINDROMES_FILE,'r')
+    infile = open(RECENTLY_USED_PALINDROMES_FILE, 'r', encoding='utf-8')
     for line in infile:
         candidate = Palindrome(line.strip())
         if (candidate.is_palindrome()):
             candidate.remove_blocked_keywords(set_blocked_wordlist)
             recently_used_list.append(candidate)
+        else:
+            print("Not a palindrome: {}".format(candidate.text))
     infile.close()
     return recently_used_list
 
@@ -136,12 +143,14 @@ def collect_all_palindromes(recent: list, set_blocked_wordlist: set):
 # Make Palindrome list (ignoring recently-used palindromes)
     palindromes = []
     for palindrome_file in PALINDROME_FILES:
-        infile = open(palindrome_file,'r')
+        infile = open(palindrome_file, 'r', encoding='utf-8')
         for line in infile:
             candidate = Palindrome(line.strip())
             if candidate.is_palindrome():
                 candidate.remove_blocked_keywords(set_blocked_wordlist)
                 palindromes.append(candidate)
+            else:
+                print("Not a palindrome: {}".format(candidate.text))
         infile.close()
     return list(set(palindromes) - set(recent[-200:]))
 
