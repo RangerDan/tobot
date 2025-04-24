@@ -43,7 +43,14 @@ Skeets are limited to 299 characters total, palindrome + sourcing + news link.  
 
 ## Future Development Possibilities
 
-- Local News
+- Enhanced Attribution (Palindrome creators, news orgs and reporters)
+
+- More Publishing options
+-- Reddit mode: List top 10 reddit posts in /r/news or /r/worldnews and find a matching palindrome. Crosspost to all observers
+
+-- Discord Comment Bot: Crosspost using Observer Pattern
+
+- More News APIs
 
 - Containerize
 
